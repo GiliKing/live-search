@@ -1,0 +1,48 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+}
+
+div.home {
+    width: 80%;
+    margin: 30px auto;
+}
+
+table {
+    width: 100%;
+    text-align: center;
+}
+
+small {
+    display: block;
+    padding-bottom: 1em;
+}
+
+span {
+    display: block;
+    margin-bottom: px;
+    margin-top: 0px;
+    border-bottom: 1px solid black;
+    padding-top: 1em;
+}
+
+button {
+    margin-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    transition: box-shadow 0.5s ease-in-out;
+}
+
+button:hover {
+    box-shadow: 5px 5px 10px lightblue;
+}
