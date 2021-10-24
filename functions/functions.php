@@ -13,7 +13,13 @@ function registerNewUser($name, $email, $password) {
 
     } else {
 
-        $users_register = "INSERT INTO users (`name`, `email`, `password`) VALUES('$name', '$email', md5('$password'))";
+        $nameEntry = mysqli_real_escape_string($conn, $name);
+
+        $emailEntry = mysqli_real_escape_string($conn, $email);
+
+        $passwordEntry = mysqli_real_escape_string($conn, $password);
+
+        $users_register = "INSERT INTO users (`name`, `email`, `password`) VALUES('$nameEntry', '$emailEntry', md5('$passwordEntry'))";
 
         $users_result = mysqli_query($conn, $users_register);
 
@@ -36,7 +42,11 @@ function checkUser($email, $password) {
 
     require "database/connect.php";
 
-    $user_query = "SELECT * FROM users WHERE email = '$email' AND password = md5('$password') LIMIT 1";
+    $emailEntry = mysqli_real_escape_string($conn, $email);
+
+    $passwordEntry = mysqli_real_escape_string($conn, $password);
+
+    $user_query = "SELECT * FROM users WHERE email = '$emailEntry' AND password = md5('$passwordEntry') LIMIT 1";
 
     $users_result = mysqli_query($conn, $user_query);
 
@@ -62,7 +72,11 @@ function loginUser($email, $password) {
 
     require "database/connect.php";
 
-    $user_query = "SELECT * FROM `users` WHERE `email` = '$email' AND `password` = md5('$password') LIMIT 1";
+    $emailEntry = mysqli_real_escape_string($conn, $email);
+
+    $passwordEntry = mysqli_real_escape_string($conn, $password);
+
+    $user_query = "SELECT * FROM `users` WHERE `email` = '$emailEntry' AND `password` = md5('$passwordEntry') LIMIT 1";
 
     $users_result = mysqli_query($conn, $user_query);
 
@@ -91,6 +105,14 @@ function addNewEntry($title, $info, $url, $keywords) {
 
     require "database/connect.php";
 
+    $titleEntry = mysqli_real_escape_string($conn, $title);
+
+    $infoEntry = mysqli_real_escape_string($conn, $info);
+
+    $urlEntry = mysqli_real_escape_string($conn, $url);
+
+    $keywordsEntry = mysqli_real_escape_string($conn, $keywords);
+
     $response = checkEntry($title, $url);
 
     if($response == true) {
@@ -99,7 +121,7 @@ function addNewEntry($title, $info, $url, $keywords) {
 
     } else {
 
-        $users_register = "INSERT INTO `engine` (`title`, `info`, `url`, `keywords`) VALUES('$title', '$info', '$url', '$keywords')";
+        $users_register = "INSERT INTO `engine` (`title`, `info`, `url`, `keywords`) VALUES('$titleEntry', '$infoEntry', '$urlEntry', '$keywordsEntry')";
 
         $users_result = mysqli_query($conn, $users_register);
 
@@ -122,7 +144,11 @@ function checkEntry($title, $url) {
 
     require "database/connect.php";
 
-    $user_query = "SELECT * FROM `engine` WHERE `title` = '$title' AND `url` = '$url' LIMIT 1";
+    $titleEntry = mysqli_real_escape_string($conn, $title);
+
+    $urlEntry = mysqli_real_escape_string($conn, $url);
+
+    $user_query = "SELECT * FROM `engine` WHERE `title` = '$titleEntry' AND `url` = '$urlEntry' LIMIT 1";
 
     $users_result = mysqli_query($conn, $user_query);
 
@@ -147,13 +173,24 @@ if(isset($_POST['search'])) {
 
     require "../database/connect.php";
 
-    $name = trim($_POST['username']);
-    $email = trim($_POST['useremail']);
-    $search  = trim($_POST['search']);
-    $searchDate = trim($_POST['searchDate']);
-    $searchTime = trim($_POST['searchTime']);
+    $name = htmlspecialchars(trim($_POST['username']), ENT_QUOTES);
+    $email = htmlspecialchars(trim($_POST['useremail']), ENT_QUOTES);
+    $search  = htmlspecialchars(trim($_POST['search']), ENT_QUOTES);
+    $searchDate = htmlspecialchars(trim($_POST['searchDate']), ENT_QUOTES);
+    $searchTime = htmlspecialchars(trim($_POST['searchTime']), ENT_QUOTES);
 
-    $query= "INSERT INTO `history` (`name`, `email`, `search`, `search_time`, `search_date`) VALUES('$name', '$email', '$search', '$searchTime', '$searchDate')";
+
+    $nameEntry = mysqli_real_escape_string($conn, $name);
+
+    $emailEntry = mysqli_real_escape_string($conn, $email);
+
+    $searchEntry = mysqli_real_escape_string($conn, $search);
+
+    $searchDateEntry = mysqli_real_escape_string($conn, $searchDate);
+
+    $searchTimeEntry = mysqli_real_escape_string($conn, $searchTime);
+
+    $query= "INSERT INTO `history` (`name`, `email`, `search`, `search_time`, `search_date`) VALUES('$nameEntry', '$emailEntry', '$searchEntry', '$searchTimeEntry', '$searchDateEntry')";
 
     $result = mysqli_query($conn, $query);
 
