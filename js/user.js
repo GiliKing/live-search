@@ -97,7 +97,7 @@ form.addEventListener("submit", function() {
     if(search.length != 0 && username.length != 0 && useremail.length != 0) {
         // using the jquery ajax to post data asyn to the php file
         $.ajax({
-            url: 'livesearch/functions.php', // containers our query logic
+            url: 'process/forms.php', // containers our query logic
             method: 'POST',
             data : {
                 username: username,
