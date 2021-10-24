@@ -13,11 +13,13 @@ if(isset($_POST['my_button'])) {
     if(empty($errors)) {
         require "database/connect.php";
 
+        $valueType = mysqli_real_escape_string($conn, $nameEntry);
+
         $query = "SELECT * FROM `engine` WHERE";
         $display_words = "";
 
         // seperate each of the keywords
-        $keywords = explode(' ', $nameEntry);
+        $keywords = explode(' ', $valueType);
         foreach($keywords as $word) {
             $query.= " `keywords` LIKE '%".$word."%' OR ";
             $display_words.=$word." ";
@@ -90,11 +92,13 @@ if(isset($_POST['query'])) {
     if(empty($errors)) {
         require "../database/connect.php";
 
+        $valueType = mysqli_real_escape_string($conn, $nameEntry);
+
         $query = "SELECT * FROM `engine` WHERE";
         $display_words = "";
 
         // seperate each of the keywords
-        $keywords = explode(' ', $nameEntry);
+        $keywords = explode(' ', $valueType);
         foreach($keywords as $word) {
             $query.= " `keywords` LIKE '%".$word."%' OR ";
             $display_words.=$word." ";
