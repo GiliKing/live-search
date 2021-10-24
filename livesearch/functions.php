@@ -5,9 +5,12 @@
 
   // checks if the ajax method is set as POST
   if (isset($_POST['query'])) {
-      $valueType = $_POST['query'];
+      $valueType = htmlspecialchars($_POST['query'], ENT_QUOTES);
+
+      $valueString = mysqli_real_escape_string($conn, $valueType);
+      
       //using the sql like operator and the percentage sign % to find any value that starts with the inputed value
-      $query = "SELECT * FROM `engine` WHERE `title` LIKE '%{$valueType}%'  LIMIT 100";
+      $query = "SELECT * FROM `engine` WHERE `title` LIKE '%{$valueString}%'  LIMIT 100";
       $result = mysqli_query($conn, $query);
 
     if (mysqli_num_rows($result) > 0) {
