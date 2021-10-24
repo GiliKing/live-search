@@ -168,40 +168,7 @@ function checkEntry($title, $url) {
     }
 }
 
-// stores our live search query in the database
-if(isset($_POST['search'])) {
 
-    require "../database/connect.php";
-
-    $name = htmlspecialchars(trim($_POST['username']), ENT_QUOTES);
-    $email = htmlspecialchars(trim($_POST['useremail']), ENT_QUOTES);
-    $search  = htmlspecialchars(trim($_POST['search']), ENT_QUOTES);
-    $searchDate = htmlspecialchars(trim($_POST['searchDate']), ENT_QUOTES);
-    $searchTime = htmlspecialchars(trim($_POST['searchTime']), ENT_QUOTES);
-
-
-    $nameEntry = mysqli_real_escape_string($conn, $name);
-
-    $emailEntry = mysqli_real_escape_string($conn, $email);
-
-    $searchEntry = mysqli_real_escape_string($conn, $search);
-
-    $searchDateEntry = mysqli_real_escape_string($conn, $searchDate);
-
-    $searchTimeEntry = mysqli_real_escape_string($conn, $searchTime);
-
-    $query= "INSERT INTO `history` (`name`, `email`, `search`, `search_time`, `search_date`) VALUES('$nameEntry', '$emailEntry', '$searchEntry', '$searchTimeEntry', '$searchDateEntry')";
-
-    $result = mysqli_query($conn, $query);
-
-    if($result) {
-
-      echo "success";
-    } else  {
-      mysqli_error($conn);
-    }
-    
-  }
 
 
 ?>

@@ -121,7 +121,7 @@ $email = $_SESSION['users']['email'];
                     if(query.length != 0 && userName.length != 0 && userEmail.length != 0) {
                         // using the jquery ajax to post data asyn to the php file
                         $.ajax({
-                            url: "functions/functions.php", // containers our query logic
+                            url: "process/forms.php", // containers our query logic
                             method: "POST",
                             data : {
                                 username: userName,
