@@ -4,7 +4,7 @@ $(document).ready(function() {
     $("#live_search").keyup(function() {
         let query = $(this).val();
         // check if the input query is not empty
-        if(query != "") {
+        if(query != "" && query != "/" && query != "'" && query != '"') {
             // using the jquery ajax to post data asyn to the php file
             $.ajax({
                 url: 'functions/livesearch.php', // containers our query logic
