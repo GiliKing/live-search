@@ -4,9 +4,9 @@
 // this is just to chechk for any errors before registration
 if(isset($_POST['register'])) {
 
-    $name = trim($_POST['name']);
-    $email = trim($_POST['email']);
-    $password = trim($_POST['password']);
+    $name = htmlspecialchars(trim($_POST['name']), ENT_QUOTES);
+    $email = htmlspecialchars(trim($_POST['email']), ENT_QUOTES);
+    $password = htmlspecialchars(trim($_POST['password']), ENT_QUOTES);
 
     $errors = [];
 
@@ -44,8 +44,8 @@ if(isset($_POST['register'])) {
 // this is just to check for any error befoe login in th user
 if(isset($_POST['login'])) {
 
-    $email = trim($_POST['email']);
-    $password = trim($_POST['password']);
+    $email = htmlspecialchars(trim($_POST['email']), ENT_QUOTES);
+    $password = htmlspecialchars(trim($_POST['password']), ENT_QUOTES);
 
     $errors = [];
 
@@ -76,10 +76,10 @@ if(isset($_POST['login'])) {
 // checking for add entry
 if(isset($_POST['addEntry'])) {
 
-    $title = trim($_POST['title']);
-    $info = trim($_POST['info']);
-    $url = trim($_POST['url']);
-    $keywords = trim($_POST['keywords']);
+    $title = htmlspecialchars(trim($_POST['title']), ENT_QUOTES);
+    $info = htmlspecialchars(trim($_POST['info']), ENT_QUOTES);
+    $url = htmlspecialchars(trim($_POST['url']), ENT_QUOTES);
+    $keywords = htmlspecialchars(trim($_POST['keywords']), ENT_QUOTES);
 
     $errors = [];
 
