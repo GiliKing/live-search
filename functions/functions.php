@@ -19,7 +19,7 @@ function registerNewUser($name, $email, $password, $token) {
 
         $passwordEntry = mysqli_real_escape_string($conn, $password);
 
-        $users_register = "INSERT INTO users (`name`, `email`, `password`) VALUES('$nameEntry', '$emailEntry', md5('$passwordEntry'))";
+        $users_register = "INSERT INTO `users` (`name`, `email`, `password`) VALUES('$nameEntry', '$emailEntry', md5('$passwordEntry'))";
 
         $users_result = mysqli_query($conn, $users_register);
 
@@ -53,7 +53,7 @@ function checkUser($email, $password) {
 
     $passwordEntry = mysqli_real_escape_string($conn, $password);
 
-    $user_query = "SELECT * FROM users WHERE email = '$emailEntry' AND password = md5('$passwordEntry') LIMIT 1";
+    $user_query = "SELECT * FROM `users` WHERE `email` = '$emailEntry' AND `password` = md5('$passwordEntry') LIMIT 1";
 
     $users_result = mysqli_query($conn, $user_query);
 
