@@ -151,7 +151,7 @@
         <div class="my-nav">
       <!-- start of navbar -->
       <nav class="navbar navbar-expand-lg navbar-light our-color">
-      <a class="navbar-brand live-text" href="user.php"><?php echo $name; ?></a>
+      <a class="navbar-brand live-text" href="user.php"><?php echo $_SESSION['welcome'] ?> <?php echo $name; ?></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
