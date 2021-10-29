@@ -29,12 +29,7 @@ if($_SESSION['users']['name'] == null && $_SESSION['users']['email'] == null) {
             width: 55%;
             margin: 30px auto;
         }
-        #p1 {
-            display: none;
-        }
-        #p2 {
-            display: none;
-        }
+        
     </style>
 
 </head>

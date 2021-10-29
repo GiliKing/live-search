@@ -136,6 +136,11 @@ function addNewEntry($title, $info, $url, $keywords, $name, $email) {
 
     $keywordsEntry = mysqli_real_escape_string($conn, $keywords);
 
+    $nameEntry = mysqli_real_escape_string($conn, $name);
+
+    $emailEntry = mysqli_real_escape_string($conn, $email);
+    
+
     $response = checkEntry($title, $url);
 
     if($response == true) {
@@ -144,7 +149,7 @@ function addNewEntry($title, $info, $url, $keywords, $name, $email) {
 
     } else {
 
-        $user_query = "SELECT * FROM `users` WHERE `name` = '$name' AND `email` = '$email' LIMIT 1";
+        $user_query = "SELECT * FROM `users` WHERE `name` = '$nameEntry' AND `email` = '$emailEntry' LIMIT 1";
 
         $users_result = mysqli_query($conn, $user_query);
 
