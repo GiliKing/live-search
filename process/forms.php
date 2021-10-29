@@ -77,8 +77,8 @@ if(isset($_POST['login'])) {
 // checking for add entry
 if(isset($_POST['addEntry'])) {
 
-    $name = $_POST(['addName']);
-    $email = $_POST(['addEmail']);
+    $name = trim($_POST['addName']);
+    $email = trim($_POST['addEmail']);
     $title = htmlspecialchars(trim($_POST['title']), ENT_QUOTES);
     $info = htmlspecialchars(trim($_POST['info']), ENT_QUOTES);
     $url = htmlspecialchars(trim($_POST['url']), ENT_QUOTES);
