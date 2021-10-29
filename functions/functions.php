@@ -1,7 +1,7 @@
 <?php
 
 // register the user to the database
-function registerNewUser($name, $email, $password) {
+function registerNewUser($name, $email, $password, $token) {
 
     require "database/connect.php";
 
@@ -26,6 +26,13 @@ function registerNewUser($name, $email, $password) {
         if($users_result) {
 
             echo "<div class='alert alert-success'>User Registered Successfully</div>";
+
+            session_start();
+
+            $_SESSION['NewEmail'] = $$emailEntry;
+            $_SESSION['NewToken'] = $token;
+
+            header("location: verify.php");
         } else  {
             mysqli_error($conn);
         }
@@ -88,7 +95,23 @@ function loginUser($email, $password) {
 
             $_SESSION['users'] = mysqli_fetch_array($users_result, MYSQLI_ASSOC);
 
-            header('location: user.php');
+            $verified = $_SESSION['users']['verified'];
+
+            if($verified != 1) {
+
+                $_SESSION['NewEmail'] = $_SESSION['users']['email'];
+                $_SESSION['NewToken'] = $_SESSION['users']['token'];
+
+                header("location: verify.php");
+                
+            }
+
+            if($verified == 1) {
+
+                header("location: user.php");
+
+            }
+
         } else {
 
             echo "<div class='alert alert-danger'>Invalid Email/Password </div>";
