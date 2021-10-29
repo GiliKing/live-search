@@ -1,7 +1,7 @@
 <?php
     session_start();
     
-    if(isset($_SESSION['users']['name']) && isset($_SESSION['users']['email']) && $_SESSION['user']['verified'] == 1) {
+    if(isset($_SESSION['users']['name']) && isset($_SESSION['users']['email'])) {
         header("location: user.php");
     } 
 ?>
