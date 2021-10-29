@@ -77,6 +77,8 @@ if(isset($_POST['login'])) {
 // checking for add entry
 if(isset($_POST['addEntry'])) {
 
+    $name = $_POST(['addName']);
+    $email = $_POST(['addEamil']);
     $title = htmlspecialchars(trim($_POST['title']), ENT_QUOTES);
     $info = htmlspecialchars(trim($_POST['info']), ENT_QUOTES);
     $url = htmlspecialchars(trim($_POST['url']), ENT_QUOTES);
@@ -84,6 +86,17 @@ if(isset($_POST['addEntry'])) {
 
     $errors = [];
 
+    if(empty($name)){
+
+		$errors[] = "<div class='alert alert-info'>You Don't Have A Verified Name</div>";
+
+	}
+
+    if(empty($email)){
+
+		$errors[] = "<div class='alert alert-info'>You Don't Have A verified Email</div>";
+
+	}
 
 	if(empty($title)){
 
@@ -107,7 +120,7 @@ if(isset($_POST['addEntry'])) {
 
         require "functions/functions.php";
 
-		$feedback = addNewEntry($title, $info, $url, $keywords);
+		$feedback = addNewEntry($title, $info, $url, $keywords, $name, $email);
 
         echo $feedback;
     } else {

@@ -1,3 +1,17 @@
+<?php 
+
+session_start();
+
+if(!isset($_SESSION['user']['email'])) {
+    header("location: index.php");
+}
+
+$name = $_SESSION['user']['name'];
+$email = $_SESSION['user']['email'];
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +30,12 @@
         h2 {
             width: 55%;
             margin: 30px auto;
+        }
+        #p1 {
+            display: none;
+        }
+        #p2 {
+            display: none;
         }
     </style>
 
@@ -46,6 +66,9 @@
                         <textarea name='keywords' class="form-control"></textarea>
                         <label>Enter The Keywords</label>
                     </div>
+
+                    <input type="hidden" name="addName" value="<?php echo $name; ?>">
+                    <input type="hidden" name="addEmail" value="<?php echo $email ?>">
 
                     <button name='addEntry' class="btn btn-lg btn-primary btn-block" type="submit">Add Entry</button>
 

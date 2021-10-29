@@ -124,7 +124,7 @@ function loginUser($email, $password) {
 
 
 // add entry to the database
-function addNewEntry($title, $info, $url, $keywords) {
+function addNewEntry($title, $info, $url, $keywords, $name, $email) {
 
     require "database/connect.php";
 
@@ -144,17 +144,41 @@ function addNewEntry($title, $info, $url, $keywords) {
 
     } else {
 
-        $users_register = "INSERT INTO `engine` (`title`, `info`, `url`, `keywords`) VALUES('$titleEntry', '$infoEntry', '$urlEntry', '$keywordsEntry')";
+        $user_query = "SELECT * FROM `users` WHERE `name` = '$name' AND `email` = '$email' LIMIT 1";
 
-        $users_result = mysqli_query($conn, $users_register);
+        $users_result = mysqli_query($conn, $user_query);
 
         if($users_result) {
 
-            echo "<div class='alert alert-success'>Entry Added Successfully</div>";
-        } else  {
-            mysqli_error($conn);
+            if (mysqli_num_rows($users_result) == 1) {
+
+                $users_register = "INSERT INTO `engine` (`title`, `info`, `url`, `keywords`) VALUES('$titleEntry', '$infoEntry', '$urlEntry', '$keywordsEntry')";
+
+                $users_result_register = mysqli_query($conn, $users_register);
+        
+                if($users_result_register) {
+        
+                    echo "<div class='alert alert-success'>Entry Added Successfully</div>";
+                } else  {
+                    
+                   echo mysqli_error($conn);
+                }
+        
+            } else {
+
+                echo "Developers Error";
+                echo mysqli_error($conn);
+                
+            }
+
+        }else {
+
+            echo "<div class='alert alert-danger'>Your Information Dont Exit In Our Databse</div>";
+
+            echo mysqli_error($conn);
         }
 
+       
     }
 
 
