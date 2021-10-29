@@ -4,6 +4,92 @@
     if($_SESSION['users']['name'] == null && $_SESSION['users']['email'] == null) {
       header("location: index.php");
   }
+
+  if(isset($_SESSION)) {
+
+
+    $storeCooks = new stdClass();
+
+    $storeCooks->name = $name;
+    $storeCooks->email = $email;
+    $storeCooks->count = 0;
+
+    //echo $storeCooks->email;
+
+
+    if(!isset($_COOKIE['ok'])) {
+
+        $_SESSION['welcome'] = 'Welcome';
+
+        $nameArray = [];
+
+        array_push($nameArray, $storeCooks);
+
+        setcookie('ok', json_encode($nameArray), time() + 3600);
+    } else {
+
+        $success_tracker = [];
+
+        $check = $_COOKIE['ok'];
+
+        $check = json_decode($check);
+
+        for($i = 0; $i < count($check); $i++){
+
+            if($check[$i]->name == $name && $check[$i]->email == $email && $check[$i]->count == 1){
+
+                    $_SESSION['welcome'] = "Welcome Back";
+
+                    array_push($success_tracker, $check[$i]->name);
+        
+                break;
+            }
+        }
+
+        if(count($success_tracker) > 0) {
+
+            // nothing to show
+        } else {
+
+            $progress_tracker = [];
+
+            for($i = 0; $i < count($check); $i++){
+
+                if($check[$i]->name == $name && $check[$i]->email == $email){
+    
+                        array_push($progress_tracker, $check[$i]->name);
+            
+                    break;
+                }
+            }
+
+            if(count($progress_tracker) > 0) {
+
+                $_SESSION['welcome'] = 'Welcome';
+                
+            } else {
+
+                $_SESSION['welcome'] = 'Welcome';
+
+                array_push($check, $storeCooks);
+
+                setcookie('ok', json_encode($check), time() + 3600);
+
+            }
+
+
+        }
+        
+
+
+    }
+
+
+    
+    
+}
+
+
 ?>
 
 <!DOCTYPE html>
