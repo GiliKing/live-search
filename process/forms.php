@@ -7,6 +7,7 @@ if(isset($_POST['register'])) {
     $name = htmlspecialchars(trim($_POST['name']), ENT_QUOTES);
     $email = htmlspecialchars(trim($_POST['email']), ENT_QUOTES);
     $password = htmlspecialchars(trim($_POST['password']), ENT_QUOTES);
+    $token = bin2hex(random_bytes(50));  // generate unique token
 
     $errors = [];
 
@@ -29,7 +30,7 @@ if(isset($_POST['register'])) {
 
         require "functions/functions.php";
 
-		$feedback = registerNewUser($name, $email, $password);
+		$feedback = registerNewUser($name, $email, $password, $token);
 
         echo $feedback;
     } else {
