@@ -1,6 +1,10 @@
 <?php 
 
-session_start();
+include "display.php";
+
+?>
+
+<?php 
 
 if(!isset($_SESSION['user']['email'])) {
     header("location: index.php");
