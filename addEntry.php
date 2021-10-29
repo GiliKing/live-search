@@ -1,17 +1,10 @@
 <?php 
 
 include "display.php";
-
-?>
-
-<?php 
-
-if(!isset($_SESSION['user']['email'])) {
-    header("location: index.php");
+    
+if($_SESSION['users']['name'] == null && $_SESSION['users']['email'] == null) {
+  header("location: index.php");
 }
-
-$name = $_SESSION['user']['name'];
-$email = $_SESSION['user']['email'];
 
 
 ?>
