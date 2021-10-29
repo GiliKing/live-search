@@ -7,6 +7,7 @@ if($_SESSION['users']['name'] == null && $_SESSION['users']['email'] == null) {
 }
 
 
+
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +66,7 @@ if($_SESSION['users']['name'] == null && $_SESSION['users']['email'] == null) {
                     </div>
 
                     <input type="hidden" name="addName" value="<?php echo $name; ?>">
-                    <input type="hidden" name="addEmail" value="<?php echo $email ?>">
+                    <input type="hidden" name="addEmail" value="<?php echo $email; ?>">
 
                     <button name='addEntry' class="btn btn-lg btn-primary btn-block" type="submit">Add Entry</button>
 

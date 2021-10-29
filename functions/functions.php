@@ -150,8 +150,6 @@ function addNewEntry($title, $info, $url, $keywords, $name, $email) {
 
         if($users_result) {
 
-            if (mysqli_num_rows($users_result) == 1) {
-
                 $users_register = "INSERT INTO `engine` (`title`, `info`, `url`, `keywords`) VALUES('$titleEntry', '$infoEntry', '$urlEntry', '$keywordsEntry')";
 
                 $users_result_register = mysqli_query($conn, $users_register);
@@ -163,13 +161,6 @@ function addNewEntry($title, $info, $url, $keywords, $name, $email) {
                     
                    echo mysqli_error($conn);
                 }
-        
-            } else {
-
-                echo "Developers Error";
-                echo mysqli_error($conn);
-                
-            }
 
         }else {
 
