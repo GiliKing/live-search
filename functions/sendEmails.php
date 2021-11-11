@@ -8,7 +8,7 @@ require 'vendor/autoload.php';
 
 $transport = (new Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl'))
 
-    ->setUsername('chrisogili12@gmail.com')
+    ->setUsername("chrisogili12@gmail.com")
     ->setPassword("gle9090#");
 
 
@@ -49,7 +49,7 @@ function sendVerificationEmail($email, $token) {
     ';
 
     $message = (new Swift_Message('Verify Your Email'))
-            ->setFrom('chrisogili12@gmail.com')
+            ->setFrom(["chrisogili12@gmail.com" => "Ogili Christian"])
             ->setTo($email)
             ->setBody($body, 'text/html');
 
