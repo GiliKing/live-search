@@ -49,7 +49,7 @@ function sendVerificationEmail($email, $token) {
     ';
 
     $message = (new Swift_Message('Verify Your Email'))
-            ->setFrom(['chrisogili12@gmail.com' => 'Ogili Christian'])
+            ->setFrom('chrisogili12@gmail.com')
             ->setTo($email)
             ->setBody($body, 'text/html');
 
