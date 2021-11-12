@@ -31,10 +31,11 @@ function registerNewUser($name, $email, $password, $token) {
 
             $_SESSION['users'] = mysqli_fetch_array($users_result, MYSQLI_ASSOC);
 
-            $_SESSION['NewEmail'] = $$emailEntry;
+            $_SESSION['NewEmail'] = $emailEntry;
             $_SESSION['NewToken'] = $token;
 
             header("location: verify.php");
+
         } else  {
             mysqli_error($conn);
         }
