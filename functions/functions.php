@@ -1,5 +1,7 @@
 <?php
 
+ini_set('display_errors', 1);
+
 // register the user to the database
 function registerNewUser($name, $email, $password, $token) {
 

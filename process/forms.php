@@ -1,6 +1,8 @@
 
 <?php 
 
+ini_set('display_errors', 1);
+
 // this is just to chechk for any errors before registration
 if(isset($_POST['register'])) {
 
