@@ -6,12 +6,13 @@ session_start();
 
 $email = $_SESSION['NewEmail'];
 $token = $_SESSION['NewToken'];
+$verified = $_SESSION['users']['verified'];
 
-if($_SESSION['users']['verified'] == 1) {
+if($verified == 1) {
     header("location: login.php");
 }
 
-if($_SESSION['users']['verified'] == 0) {
+if($verified == 0) {
     include 'functions/sendEmails.php';
 
     sendVerificationEmail($email, $token);
