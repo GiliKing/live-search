@@ -19,7 +19,7 @@ function registerNewUser($name, $email, $password, $token) {
 
         $passwordEntry = mysqli_real_escape_string($conn, $password);
 
-        $users_register = "INSERT INTO `users` (`name`, `email`, `password`) VALUES('$nameEntry', '$emailEntry', md5('$passwordEntry'))";
+        $users_register = "INSERT INTO `users` (`name`, `email`, `password`, `token`) VALUES('$nameEntry', '$emailEntry', md5('$passwordEntry'), '$token')";
 
         $users_result = mysqli_query($conn, $users_register);
 
