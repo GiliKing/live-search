@@ -6,6 +6,7 @@ session_start();
 
 $email = $_SESSION['NewEmail'];
 $token = $_SESSION['NewToken'];
+
 $verified = $_SESSION['users']['verified'];
 
 if($verified == 1) {
