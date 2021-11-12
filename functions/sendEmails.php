@@ -13,6 +13,7 @@ $transport = (new Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl'))
 
 
 // create the mailer
+
 $mailer = new Swift_Mailer($transport);
 
 function sendVerificationEmail($email, $token) {
@@ -42,7 +43,7 @@ function sendVerificationEmail($email, $token) {
             <body>
                 <div class="container">
                    <p>Thank You for signing up on our site. Please click on the link below to verify your account:</p>
-                   <a href="https://live-search-project.herokuapp.com/verifyEmail.php?token=' . $token . '">Verify Email</a>
+                   <a href="http://localhost/cookies_session/verifyEmail.php?token=' . $token . '">Verify Email</a>
                 </div>
             </body>
         </html>
@@ -63,3 +64,4 @@ function sendVerificationEmail($email, $token) {
 }
 
 ?>
+
