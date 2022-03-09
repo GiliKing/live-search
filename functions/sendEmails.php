@@ -8,8 +8,8 @@ require 'vendor/autoload.php';
 
 $transport = (new Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl'))
 
-    ->setUsername("chrisogili12@gmail.com")
-    ->setPassword("gle9090#");
+    ->setUsername("")
+    ->setPassword("");
 
 
 // create the mailer
